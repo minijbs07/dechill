@@ -1,23 +1,22 @@
-// --- BASE DE DATOS GENÉRICA (Basada estrictamente en el texto) ---
-// Solo mostramos las dos categorías principales mencionadas en el texto.
+// --- BASE DE DATOS GENÉRICA ---
 const productsDB = [
     {
         id: "ataudes",
         category: "Fabricación Propia",
         title: "Ataúdes",
         description: "Ataúdes elaborados íntegramente en España, concretamente en Cantabria. Utilizamos madera proveniente de proveedores de la región, garantizando un proceso productivo responsable y sostenible. Cada pieza refleja el compromiso, la dedicación y el respeto de nuestros profesionales.",
-        image: "https://images.unsplash.com/photo-1517424667319-e58f0003cb0c?q=80&w=2069&auto=format&fit=crop" // Imagen solemne de ataúd de madera clara/natural
+        image: "https://images.unsplash.com/photo-1517424667319-e58f0003cb0c?q=80&w=2069&auto=format&fit=crop" 
     },
     {
         id: "urnas",
         category: "Elaboración Artesanal",
         title: "Urnas Funerarias",
         description: "Urnas de elaboración artesanal llevada a cabo en nuestra nave del Polígono Industrial de Guarnizo. Tratadas con el máximo rigor profesional, sensibilidad y calidad en el cuidado del detalle.",
-        image: "https://images.unsplash.com/photo-1605218427368-35b86121852d?q=80&w=2008&auto=format&fit=crop" // Imagen de urna sobria/madera
+        image: "https://images.unsplash.com/photo-1605218427368-35b86121852d?q=80&w=2008&auto=format&fit=crop" 
     }
 ];
 
-// --- INICIALIZACIÓN ---
+// --- INICIALIZACIÓN (Event Listeners y Carga inicial) ---
 document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Quitar Preloader
@@ -32,24 +31,31 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Renderizar Catálogo
     renderCatalog();
 
-    // 3. Menú Móvil
+    // 3. Menú Móvil (Listener para el botón)
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.querySelector('.nav-menu');
     
     if(menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active-menu');
+            menuToggle.classList.toggle('is-active');
         });
     }
+
+    // 4. Iniciar Observador de Animaciones (Scroll)
+    // Retardo para asegurar que el DOM dinámico está listo
+    setTimeout(() => {
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }, 500);
 });
 
-// --- SISTEMA DE NAVEGACIÓN ---
+// --- SISTEMA DE NAVEGACIÓN (GLOBAL) ---
+// Esta función debe estar fuera para ser accesible desde el HTML
 function navigateTo(pageId) {
     // 1. Ocultar todas las secciones
     const sections = document.querySelectorAll('.page-section');
     sections.forEach(sec => {
         sec.classList.remove('active');
-        // Pequeño timeout para display none si quisieramos animar salida
         sec.style.display = 'none'; 
     });
 
@@ -65,9 +71,14 @@ function navigateTo(pageId) {
         target.classList.add('active');
     }
 
-    // Cerrar menú móvil si está abierto
+    // 4. Cerrar menú móvil al navegar
     const navMenu = document.querySelector('.nav-menu');
-    if(navMenu) navMenu.classList.remove('active-menu');
+    const menuToggle = document.getElementById('mobile-menu');
+    
+    if(navMenu && navMenu.classList.contains('active-menu')) {
+        navMenu.classList.remove('active-menu');
+        if(menuToggle) menuToggle.classList.remove('is-active');
+    }
 }
 
 // --- RENDERIZADO CATÁLOGO ---
@@ -114,23 +125,17 @@ function openProductDetail(id) {
     const descEl = document.getElementById('pd-desc');
     if(descEl) descEl.textContent = product.description;
 
-    // Navegar
+    // Navegar a la página de detalle
     navigateTo('product-detail');
 }
 
-// --- ANIMACIONES AL SCROLL ---
+// --- ANIMACIONES AL SCROLL (OBSERVER) ---
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('active');
-            // Forzar opacidad por si el CSS tarda
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
         }
     });
 }, { threshold: 0.1 });
-
-// Retardo para asegurar que el DOM está listo
-setTimeout(() => {
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-}, 500);
