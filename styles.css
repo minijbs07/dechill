@@ -1,0 +1,193 @@
+/* --- CONFIGURACIÓN DE SOLEMNIDAD --- */
+:root {
+    --bg-deep: #1a1a1a;      /* Gris Muy Oscuro (Menos duro que el negro puro) */
+    --bg-card: #242424;      /* Contraste ligero para tarjetas */
+    --text-main: #e0e0e0;    /* Blanco suave */
+    --text-muted: #a0a0a0;   /* Gris medio */
+    --accent-gold: #c5afa4;  /* Tono Madera/Arena apagado (Sobrio) */
+    --border-subtle: rgba(197, 175, 164, 0.15);
+    
+    --font-display: 'Cinzel', serif;
+    --font-body: 'Cormorant Garamond', serif;
+    --font-nav: 'Montserrat', sans-serif;
+
+    --ease-luxury: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-deep);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    font-size: 19px;
+    line-height: 1.8;
+    overflow-x: hidden;
+}
+
+/* --- PRELOADER --- */
+#preloader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-deep);
+    z-index: 9999;
+    display: flex; justify-content: center; align-items: center;
+    transition: opacity 0.8s ease;
+}
+.loader-content { text-align: center; }
+.logo-text { font-family: var(--font-display); font-size: 2rem; color: var(--accent-gold); letter-spacing: 4px; }
+.line { width: 0; height: 1px; background: var(--accent-gold); margin-top: 15px; animation: growLine 1.2s ease forwards; }
+@keyframes growLine { to { width: 100%; } }
+
+/* --- NAVEGACIÓN --- */
+.navbar {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 1.2rem 5%;
+    background: rgba(26, 26, 26, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-subtle);
+}
+.nav-container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-display); font-size: 1.6rem; color: #fff; letter-spacing: 2px; }
+
+.nav-menu { display: flex; gap: 2.5rem; list-style: none; }
+.nav-link { 
+    font-family: var(--font-nav); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; 
+    color: var(--text-main); transition: var(--ease-luxury); opacity: 0.8;
+}
+.nav-link:hover { color: var(--accent-gold); opacity: 1; }
+.btn-contact { border: 1px solid var(--accent-gold); padding: 0.6rem 1.5rem; }
+.btn-contact:hover { background: var(--accent-gold); color: var(--bg-deep); }
+
+/* --- SPA LAYOUT --- */
+#main-content { min-height: 100vh; padding-top: 80px; }
+.page-section {
+    display: none; /* Oculto por defecto */
+    opacity: 0;
+    animation: fadeIn 0.8s ease forwards;
+    padding-bottom: 5rem;
+}
+.page-section.active { display: block; opacity: 1; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* --- SECCIONES ESTRUCTURALES --- */
+.content-wrapper { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem; }
+.hero-screen {
+    height: 92vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center;
+    margin-top: -80px;
+}
+.hero-bg {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    /* Imagen de paisaje Cantabria/Naturaleza oscura */
+    background: url('https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=2041&auto=format&fit=crop') center/cover;
+    filter: brightness(0.4) grayscale(80%);
+}
+.hero-text { z-index: 2; position: relative; max-width: 800px; padding: 0 20px; }
+h1 { font-family: var(--font-display); font-size: 3rem; color: #fff; margin-bottom: 1.5rem; letter-spacing: 2px; font-weight: 500; }
+.hero-text p { font-size: 1.3rem; margin-bottom: 3rem; font-weight: 300; color: #ddd; }
+
+.btn-noble {
+    background: transparent; border: 1px solid var(--accent-gold); color: var(--accent-gold);
+    padding: 1rem 2.5rem; font-family: var(--font-nav); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem;
+    cursor: pointer; transition: var(--ease-luxury);
+}
+.btn-noble:hover { background: var(--accent-gold); color: var(--bg-deep); }
+
+/* --- LAYOUTS DE TEXTO --- */
+.split-section { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-bottom: 6rem; }
+.split-section.reverse { direction: rtl; } /* Truco para alternar imagen/texto */
+.split-section.reverse > * { direction: ltr; }
+
+.split-text h2 { font-family: var(--font-display); font-size: 2.2rem; margin-bottom: 1.5rem; color: #fff; }
+.split-text p { margin-bottom: 1.5rem; color: var(--text-muted); font-size: 1.1rem; text-align: justify; }
+.section-subtitle { display: block; font-family: var(--font-nav); color: var(--accent-gold); text-transform: uppercase; letter-spacing: 3px; font-size: 0.7rem; margin-bottom: 1rem; }
+
+.split-image img { width: 100%; border-radius: 2px; filter: grayscale(30%); transition: var(--ease-luxury); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+.split-image:hover img { filter: grayscale(0%); transform: scale(1.02); }
+
+.quote-section { text-align: center; font-size: 1.6rem; font-style: italic; color: #fff; margin: 4rem auto; max-width: 800px; border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); padding: 3rem 0; }
+
+.factory-block { background: var(--bg-card); padding: 3rem; text-align: center; margin-top: 3rem; border: 1px solid var(--border-subtle); }
+.factory-block h3 { font-family: var(--font-display); color: var(--accent-gold); margin-bottom: 1rem; font-size: 1.5rem; }
+
+/* --- CATÁLOGO --- */
+.page-header { text-align: center; padding: 5rem 2rem 3rem; background: var(--bg-deep); }
+.page-header h2 { font-family: var(--font-display); font-size: 2.5rem; color: #fff; margin-bottom: 0.5rem; }
+.page-header p { color: var(--text-muted); }
+
+.catalog-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem;
+    max-width: 1200px; margin: 0 auto; padding: 0 5%;
+}
+
+.product-card {
+    background: var(--bg-card); border: 1px solid rgba(255,255,255,0.05); cursor: pointer; transition: var(--ease-luxury);
+}
+.product-card:hover { transform: translateY(-5px); border-color: var(--accent-gold); }
+
+.pc-img-box { height: 400px; overflow: hidden; }
+.pc-img-box img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); transition: transform 1s ease; }
+.product-card:hover .pc-img-box img { transform: scale(1.05); filter: brightness(1); }
+
+.pc-info { padding: 2rem; text-align: center; }
+.pc-cat { font-family: var(--font-nav); font-size: 0.7rem; text-transform: uppercase; color: var(--accent-gold); letter-spacing: 2px; margin-bottom: 0.8rem; display: block; }
+.pc-title { font-family: var(--font-display); font-size: 1.3rem; color: #fff; }
+
+/* --- DETALLE PRODUCTO --- */
+.back-link { cursor: pointer; color: var(--accent-gold); padding: 2rem 10%; font-family: var(--font-nav); text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; display: block; }
+.product-detail-container {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; padding: 0 10%; align-items: center; max-width: 1400px; margin: 0 auto;
+}
+.pd-image { height: 600px; background: #000; }
+.pd-image img { width: 100%; height: 100%; object-fit: cover; }
+.pd-info h2 { font-size: 2.5rem; font-family: var(--font-display); margin: 0.5rem 0 2rem; color: #fff; }
+.pd-info .subtitle { color: var(--accent-gold); font-family: var(--font-nav); text-transform: uppercase; letter-spacing: 2px; }
+.disclaimer { margin-top: 2rem; font-size: 0.8rem; color: #666; font-style: italic; }
+
+/* --- COMPROMISO & ODS --- */
+.ods-badges { display: flex; justify-content: center; gap: 2rem; margin-top: 3rem; flex-wrap: wrap; }
+.ods-item { 
+    border: 1px solid var(--accent-gold); color: var(--accent-gold); padding: 1rem 2rem; 
+    font-family: var(--font-nav); text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem;
+}
+
+/* --- CONTACTO --- */
+.contact-split { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+.contact-info h2 { font-family: var(--font-display); font-size: 2.2rem; color: #fff; margin-bottom: 1.5rem; }
+.contact-subtext { margin-bottom: 2rem; font-size: 1rem; color: var(--text-muted); }
+.info-block { margin-top: 2rem; border-left: 2px solid var(--accent-gold); padding-left: 1.5rem; }
+.info-block h4 { color: #fff; margin-bottom: 0.5rem; font-family: var(--font-nav); text-transform: uppercase; letter-spacing: 1px; }
+
+.elegant-form .form-group { margin-bottom: 1.5rem; }
+.elegant-form label { display: block; margin-bottom: 0.5rem; font-family: var(--font-nav); font-size: 0.7rem; text-transform: uppercase; color: var(--accent-gold); }
+.elegant-form input, .elegant-form textarea {
+    width: 100%; background: rgba(255,255,255,0.03); border: 1px solid #444; color: #fff; padding: 1rem; font-family: var(--font-body);
+}
+.elegant-form input:focus, .elegant-form textarea:focus { border-color: var(--accent-gold); outline: none; background: rgba(255,255,255,0.05); }
+.full-width { width: 100%; margin-top: 1rem; }
+
+/* --- FOOTER --- */
+footer { border-top: 1px solid #333; padding: 3rem 0; margin-top: 5rem; text-align: center; }
+.f-logo { font-family: var(--font-display); font-size: 1.5rem; color: #666; margin-bottom: 1rem; }
+.f-copy { color: #444; font-size: 0.8rem; }
+
+/* --- UTILS --- */
+.fade-in-up { opacity: 0; animation: fadeUp 1s ease forwards; }
+.delay-1 { animation-delay: 0.3s; }
+.delay-2 { animation-delay: 0.6s; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .navbar { padding: 1rem; }
+    .nav-menu { 
+        position: fixed; top: 60px; left: 0; width: 100%; height: 100vh; background: var(--bg-deep);
+        flex-direction: column; justify-content: center; align-items: center; display: none;
+    }
+    .nav-menu.active-menu { display: flex; }
+    .mobile-menu-btn { display: block; z-index: 1000; }
+    
+    .split-section, .split-section.reverse, .contact-split, .product-detail-container { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-text h1 { font-size: 2rem; }
+    .pd-image { height: 300px; }
+}
