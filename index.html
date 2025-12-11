@@ -5,27 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DeChill | Fabricación de Ataúdes y Urnas</title>
     
-    <!-- Fuentes: Cinzel (Solemne) y Cormorant Garamond (Elegante y clásica) -->
+    <!-- Fuentes Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
     
+    <!-- Iconos para Redes Sociales -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Preloader -->
+    <!-- PRELOADER -->
     <div id="preloader">
         <div class="loader-content">
-            <span class="logo-text">DeChill</span>
+            <img src="WhatsApp Image 2025-12-08 at 18.55.11.png" alt="DeChill Logo" class="preloader-logo" onerror="this.style.display='none'">
             <div class="line"></div>
         </div>
     </div>
 
-    <!-- Navegación Fija -->
+    <!-- NAVEGACIÓN -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="logo" onclick="navigateTo('home')">DeChill.</a>
+            <a href="#" class="logo-link" onclick="navigateTo('home')">
+                <img src="WhatsApp Image 2025-12-08 at 18.55.11.png" alt="DeChill" class="nav-logo-img">
+            </a>
+            
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -40,33 +46,42 @@
         </div>
     </nav>
 
-    <!-- CONTENEDOR DE PÁGINAS -->
     <main id="main-content">
 
-        <!-- 1. PORTADA (HOME) -->
+        <!-- HOME / PORTADA -->
         <section id="home" class="page-section active">
             <div class="hero-screen">
                 <div class="hero-bg"></div>
-                <div class="overlay"></div>
                 <div class="hero-text">
                     <h1 class="fade-in-up">Profesionalidad y Sensibilidad</h1>
-                    <p class="fade-in-up delay-1">Fabricación y distribución de ataúdes y urnas funerarias.<br>Elaboradas íntegramente en España.</p>
-                    <button class="btn-noble fade-in-up delay-2" onclick="navigateTo('firm')">Conocer DeChill</button>
+                    
+                    <div class="hero-bio fade-in-up delay-1">
+                        <p>En DeChill redefinimos el adiós con artesanía cántabra y respeto absoluto. Creamos piezas únicas que honran la memoria, fusionando la tradición maderera con una estética contemporánea y serena.</p>
+                    </div>
+
+                    <div class="hero-actions fade-in-up delay-2">
+                        <button class="btn-noble" onclick="navigateTo('firm')">Conocer DeChill</button>
+                        
+                        <div class="social-hero">
+                            <a href="https://www.instagram.com/fabricadechill" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.tiktok.com/@equipodechill" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- 2. LA FIRMA -->
+        <!-- LA FIRMA -->
         <section id="firm" class="page-section">
             <div class="content-wrapper">
                 <div class="split-section">
                     <div class="split-text reveal">
                         <span class="section-subtitle">Nuestra Esencia</span>
                         <h2>Fabricación Nacional</h2>
-                        <p>Nuestra empresa DeChill se dedica a la fabricación y distribución de ataúdes y urnas funerarias, elaboradas íntegramente en España, concretamente en Cantabria. Nuestro objetivo es apoyar a los operadores económicos nacionales y contribuir al desarrollo sostenible de la economía española, a través de un producto indispensable, respetuoso y tratado con el máximo rigor profesional.</p>
+                        <p>Nuestra empresa DeChill se dedica a la fabricación y distribución de ataúdes y urnas funerarias, elaboradas íntegramente en España, concretamente en Cantabria. Nuestro objetivo es apoyar a los operadores económicos nacionales y contribuir al desarrollo sostenible de la economía española.</p>
                     </div>
                     <div class="split-image reveal">
-                        <img src="https://images.unsplash.com/photo-1622398925373-3f91b1e275f5?q=80&w=2074&auto=format&fit=crop" alt="Taller de madera">
+                        <img src="WhatsApp Image 2025-12-08 at 18.55.10 (5).jpeg" alt="Taller de fabricación DeChill">
                     </div>
                 </div>
 
@@ -78,21 +93,15 @@
                     <div class="split-text reveal">
                         <h2>Calidad y Detalle</h2>
                         <p>Nos centramos en la calidad del producto final y en el cuidado del detalle. Contamos con un equipo joven, responsable y con valores firmes, que comparte la importancia del trabajo bien hecho, sobre todo del respeto hacia el cliente y hacia el producto que elaboramos.</p>
-                        <p>En DeChill creemos que la profesionalidad y la sensibilidad deben ir de la mano en un sector tan significativo como el funerario.</p>
                     </div>
                     <div class="split-image reveal">
-                        <img src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?q=80&w=1974&auto=format&fit=crop" alt="Detalle artesanía">
+                        <img src="WhatsApp Image 2025-12-08 at 18.55.10 (6).jpeg" alt="Profesional trabajando el interior">
                     </div>
-                </div>
-
-                <div class="factory-block reveal">
-                    <h3>Instalaciones en Guarnizo</h3>
-                    <p>Nuestra fábrica se ubica en el Polígono Industrial de Guarnizo. La nave dispone de todas las instalaciones y maquinaria necesarias para llevar a cabo el proceso productivo completo, desde el tratamiento de la madera hasta el montaje final y la elaboración artesanal de nuestras urnas.</p>
                 </div>
             </div>
         </section>
 
-        <!-- 3. COLECCIÓN -->
+        <!-- CATÁLOGO -->
         <section id="catalog" class="page-section">
             <div class="page-header">
                 <h2>Nuestros Productos</h2>
@@ -100,11 +109,11 @@
             </div>
             
             <div class="catalog-grid" id="catalog-container">
-                <!-- Se rellena con JS -->
+                <!-- Se llena con JS -->
             </div>
         </section>
 
-        <!-- 4. DETALLE DE PRODUCTO -->
+        <!-- DETALLE PRODUCTO -->
         <section id="product-detail" class="page-section">
             <div class="back-link" onclick="navigateTo('catalog')">← Volver a la Colección</div>
             <div class="product-detail-container">
@@ -122,120 +131,114 @@
             </div>
         </section>
 
-        <!-- 5. COMPROMISO (ACTUALIZADO: GAME CHANGER & ODS DETALLADOS) -->
+        <!-- COMPROMISO (SECCIÓN AMPLIADA) -->
         <section id="commitment" class="page-section">
              <div class="page-header">
                 <h2>Sostenibilidad y Vanguardia</h2>
-                <p>Redefiniendo el sector con responsabilidad ética.</p>
+                <p>Redefiniendo el sector con responsabilidad ética y compromiso global.</p>
             </div>
             
             <div class="content-wrapper">
                 
-                <!-- Game Changer Intro -->
+                <!-- Bloque 1: Origen y Misión -->
                 <div class="split-section">
                     <div class="split-text reveal">
-                        <span class="section-subtitle">Revolución Silenciosa: Modelo Km 0</span>
-                        <h3>Un Nuevo Paradigma Ecológico</h3>
-                        <p>El sector funerario tradicional ha dependido históricamente de largas cadenas de suministro. En <strong>DeChill</strong>, somos pioneros en un cambio de modelo: centralizamos nuestra producción en Cantabria utilizando exclusivamente <strong>maderas de proveedores regionales</strong>.</p>
-                        <p>Esta decisión estratégica nos convierte en un agente de cambio (<em>Game Changer</em>) al reducir drásticamente la huella de carbono asociada al transporte internacional de féretros, apoyando simultáneamente la gestión forestal sostenible de nuestros bosques locales.</p>
+                        <span class="section-subtitle">Origen y Misión</span>
+                        <h3>Artesanía desde Cantabria</h3>
+                        <p>DeChill se dedica a la fabricación y distribución de ataúdes y urnas funerarias, elaboradas íntegramente en <strong>España</strong>, concretamente en <strong>Cantabria</strong>. Nuestro objetivo es apoyar a los operadores económicos nacionales y contribuir al desarrollo sostenible de la economía española, a través de un producto indispensable, respetuoso y tratado con el máximo rigor profesional.</p>
+                        <p>En DeChill creemos que la profesionalidad y la sensibilidad deben ir de la mano en un sector tan significativo como el funerario.</p>
                     </div>
                     <div class="split-image reveal">
-                        
-                        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?q=80&w=2013&auto=format&fit=crop" alt="Bosque Sostenible Cantabria">
+                        <img src="WhatsApp Image 2025-12-08 at 18.55.10.jpeg" alt="Presentación final con flores">
                     </div>
                 </div>
 
-                <!-- ODS Grid con Fuentes Oficiales -->
+                <!-- Bloque 2: ODS Detallados -->
                 <div class="ods-detailed-block reveal" style="margin-top: 5rem;">
                     <div style="text-align: center; margin-bottom: 3rem;">
-                        <h3>Alineados con la Agenda 2030</h3>
-                        <p style="max-width: 700px; margin: 0 auto; color: var(--text-muted);">Nuestros procesos productivos no son aleatorios; siguen rigurosamente los marcos internacionales de sostenibilidad marcados por Naciones Unidas.</p>
+                        <h3>Compromiso con la Agenda 2030</h3>
+                        <p style="max-width: 800px; margin: 0 auto; color: var(--text-muted);">
+                            Tenemos un fuerte compromiso social y medioambiental, desarrollando procesos productivos responsables y aplicando criterios de sostenibilidad acordes con los Objetivos de Desarrollo Sostenible de la ONU.
+                        </p>
                     </div>
                     
-                    <div class="ods-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                        
-                        <!-- ODS 12 -->
-                        <div class="ods-card" style="border: 1px solid var(--accent-gold); padding: 2.5rem; background: rgba(255,255,255,0.02); transition: all 0.3s ease;">
-                            <h4 style="color: #bf8b2e; font-family: var(--font-display); margin-bottom: 1rem; font-size: 1.2rem;">ODS 12: Producción Responsable</h4>
-                            <p style="font-size: 0.95rem; margin-bottom: 1.5rem; color: #ccc;">Garantizamos modalidades de consumo y producción sostenibles mediante el uso eficiente de recursos naturales y la minimización de residuos en nuestra planta de Guarnizo.</p>
-                            <a href="https://www.un.org/sustainabledevelopment/es/sustainable-consumption-production/" target="_blank" style="color: var(--accent-gold); text-decoration: none; font-size: 0.8rem; border-bottom: 1px solid var(--accent-gold); padding-bottom: 2px;">Fuente Oficial ONU →</a>
+                    <div class="ods-grid">
+                        <!-- ODS 8 -->
+                        <div class="ods-card">
+                            <h4>ODS 8: Trabajo Decente</h4>
+                            <p>Contamos con un equipo joven, responsable y con valores firmes. Fomentamos el crecimiento económico local priorizando el respeto hacia el cliente y la dignidad del trabajo bien hecho.</p>
                         </div>
 
-                        <!-- ODS 8 -->
-                        <div class="ods-card" style="border: 1px solid var(--accent-gold); padding: 2.5rem; background: rgba(255,255,255,0.02); transition: all 0.3s ease;">
-                            <h4 style="color: #bf8b2e; font-family: var(--font-display); margin-bottom: 1rem; font-size: 1.2rem;">ODS 8: Trabajo Decente</h4>
-                            <p style="font-size: 0.95rem; margin-bottom: 1.5rem; color: #ccc;">Fomentamos el crecimiento económico local. Apostamos por un equipo joven con condiciones laborales dignas, vitalizando el tejido industrial español.</p>
-                            <a href="https://www.un.org/sustainabledevelopment/es/economic-growth/" target="_blank" style="color: var(--accent-gold); text-decoration: none; font-size: 0.8rem; border-bottom: 1px solid var(--accent-gold); padding-bottom: 2px;">Fuente Oficial ONU →</a>
+                        <!-- ODS 12 -->
+                        <div class="ods-card">
+                            <h4>ODS 12: Producción Responsable</h4>
+                            <p>Nos centramos en la calidad y el cuidado del detalle. Desde nuestra nave en el Polígono de Guarnizo, gestionamos el ciclo completo, desde el tratamiento de la madera hasta el montaje final artesanal.</p>
                         </div>
 
                         <!-- ODS 13 -->
-                        <div class="ods-card" style="border: 1px solid var(--accent-gold); padding: 2.5rem; background: rgba(255,255,255,0.02); transition: all 0.3s ease;">
-                            <h4 style="color: #bf8b2e; font-family: var(--font-display); margin-bottom: 1rem; font-size: 1.2rem;">ODS 13: Acción por el Clima</h4>
-                            <p style="font-size: 0.95rem; margin-bottom: 1.5rem; color: #ccc;">Adoptamos medidas urgentes contra el cambio climático. Priorizamos materiales biodegradables y acabados al agua para proteger nuestros ecosistemas.</p>
-                            <a href="https://www.un.org/sustainabledevelopment/es/climate-change-2/" target="_blank" style="color: var(--accent-gold); text-decoration: none; font-size: 0.8rem; border-bottom: 1px solid var(--accent-gold); padding-bottom: 2px;">Fuente Oficial ONU →</a>
+                        <div class="ods-card">
+                            <h4>ODS 13: Acción por el Clima</h4>
+                            <p>Utilizamos madera proveniente de proveedores de la región de Cantabria, reduciendo drásticamente la huella de carbono del transporte y apoyando la gestión forestal sostenible.</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Bloque de Transparencia -->
-                <div class="trust-block reveal" style="margin-top: 6rem; border-top: 1px solid var(--border-subtle); padding-top: 4rem;">
-                    <div class="split-section reverse">
-                        <div class="split-text">
-                            <h3>Trazabilidad Total</h3>
-                            <p>En un mercado globalizado, DeChill ofrece transparencia. Cada una de nuestras piezas cuenta con una trazabilidad completa: nuestros clientes saben exactamente el origen de la madera y las manos que la han trabajado.</p>
-                            <p>Aplicamos criterios de sostenibilidad que van más allá de la normativa, integrando principios de economía circular para asegurar que el final de la vida sea tan respetuoso como su comienzo.</p>
-                            <ul style="margin-top: 1.5rem; list-style: none; color: var(--text-muted);">
-                                <li style="margin-bottom: 0.8rem;">✓ Proveedores certificados de la región.</li>
-                                <li style="margin-bottom: 0.8rem;">✓ Eliminación de barnices tóxicos en gamas Eco.</li>
-                                <li style="margin-bottom: 0.8rem;">✓ Manufactura artesanal que reduce el consumo energético.</li>
-                            </ul>
-                        </div>
-                        <div class="split-image">
-                             <img src="https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=2070&auto=format&fit=crop" alt="Materiales Naturales">
-                        </div>
-                    </div>
+                <!-- Bloque 3: Colaboración Comercial -->
+                <div class="info-block-centered reveal">
+                    <h3>Colaboración y Cercanía</h3>
+                    <p>DeChill orienta su actividad comercial a la colaboración con funerarias, distribuidores y operadores del sector, ofreciendo productos adaptados a sus necesidades.</p>
+                    <p class="small-text">Para ello contamos con diferentes canales informativos como nuestra página web, correo electrónico, teléfono y redes sociales, fomentando un contacto más cercano y familiar.</p>
+                    <button class="btn-noble" onclick="navigateTo('contact')" style="margin-top: 2rem;">Contactar Ahora</button>
                 </div>
 
             </div>
         </section>
 
-        <!-- 6. CONTACTO -->
+        <!-- CONTACTO & SOCIAL -->
         <section id="contact" class="page-section">
-            <div class="contact-split">
+            
+            <div class="social-feed-container reveal">
+                <div class="social-header">
+                    <i class="fab fa-instagram"></i>
+                    <h3>@fabricadechill</h3>
+                    <a href="https://www.instagram.com/fabricadechill" target="_blank" class="social-follow-link">Seguir</a>
+                </div>
+                <div class="insta-grid">
+                    <div class="insta-item"><img src="WhatsApp Image 2025-12-08 at 18.55.10.jpeg" alt="Feed 1"></div>
+                    <div class="insta-item"><img src="WhatsApp Image 2025-12-08 at 18.55.10 (2).jpeg" alt="Feed 2"></div>
+                    <div class="insta-item"><img src="WhatsApp Image 2025-12-08 at 18.55.10 (3).jpeg" alt="Feed 3"></div>
+                    <div class="insta-item"><img src="WhatsApp Image 2025-12-08 at 18.55.10 (5).jpeg" alt="Feed 4"></div>
+                </div>
+            </div>
+
+            <div class="contact-split" style="margin-top: 5rem;">
                 <div class="contact-info">
                     <h2>Colaboración Profesional</h2>
-                    <p>DeChill orienta su actividad comercial a la colaboración con funerarias, distribuidores y operadores del sector, ofreciendo productos adaptados a sus necesidades.</p>
-                    
-                    <p class="contact-subtext">Para ello contamos con diferentes canales informativos como nuestra página web, en donde se podrán informar sobre nuestro catálogo, correo electrónico, número de teléfono y redes sociales, para fomentar un contacto más cercano y familiar con nuestros clientes.</p>
-                    
+                    <p>Productos adaptados a las necesidades de funerarias y distribuidores.</p>
                     <div class="info-block">
                         <h4>Ubicación</h4>
                         <p>Polígono Industrial de Guarnizo<br>Cantabria, España</p>
                     </div>
-                    
                     <div class="info-block">
                         <h4>Contacto</h4>
-                        <p>+34 942 00 00 00<br>info@dechill.es</p>
+                        <p>+34 942 00 00 00<br>fabricadechill@gmail.com</p>
                     </div>
+                    
+                    <div class="social-links-block">
+                        <h4>Síguenos</h4>
+                        <div class="social-icons-row">
+                            <a href="https://www.instagram.com/fabricadechill" target="_blank" class="soc-btn"><i class="fab fa-instagram"></i> Instagram</a>
+                            <a href="https://www.tiktok.com/@equipodechill" target="_blank" class="soc-btn"><i class="fab fa-tiktok"></i> TikTok</a>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="contact-form-wrapper">
                     <form class="elegant-form" onsubmit="event.preventDefault(); alert('Gracias por contactar con DeChill.');">
-                        <div class="form-group">
-                            <label>Funeraria / Empresa</label>
-                            <input type="text" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Teléfono</label>
-                            <input type="tel" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Correo Electrónico</label>
-                            <input type="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Mensaje</label>
-                            <textarea rows="4"></textarea>
-                        </div>
+                        <div class="form-group"><label>Funeraria / Empresa</label><input type="text" required></div>
+                        <div class="form-group"><label>Teléfono</label><input type="tel" required></div>
+                        <div class="form-group"><label>Email</label><input type="email" required></div>
+                        <div class="form-group"><label>Mensaje</label><textarea rows="4"></textarea></div>
                         <button type="submit" class="btn-noble full-width">Solicitar Información</button>
                     </form>
                 </div>
@@ -246,8 +249,10 @@
 
     <footer>
         <div class="footer-inner">
-            <div class="f-logo">DeChill.</div>
-            <div class="f-copy">&copy; 2023 DeChill. Fabricado en Cantabria, España.</div>
+            <div class="f-logo" style="opacity: 0.5;">
+                <img src="WhatsApp Image 2025-12-08 at 18.55.11.png" alt="Logo" style="height: 30px; filter: grayscale(1);">
+            </div>
+            <div class="f-copy">&copy; 2025 DeChill. Fabricado en Cantabria, España.</div>
         </div>
     </footer>
 

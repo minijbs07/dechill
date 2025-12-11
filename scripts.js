@@ -1,37 +1,44 @@
-// --- BASE DE DATOS GENÉRICA ---
+// --- BASE DE DATOS DE PRODUCTOS ---
 const productsDB = [
     {
         id: "ataudes",
         category: "Fabricación Propia",
-        title: "Ataúdes",
-        description: "Ataúdes elaborados íntegramente en España, concretamente en Cantabria. Utilizamos madera proveniente de proveedores de la región, garantizando un proceso productivo responsable y sostenible. Cada pieza refleja el compromiso, la dedicación y el respeto de nuestros profesionales.",
-        image: "https://images.unsplash.com/photo-1517424667319-e58f0003cb0c?q=80&w=2069&auto=format&fit=crop" 
+        title: "Ataúd Roble Cantabria",
+        description: "Ataúdes elaborados íntegramente en España, concretamente en Cantabria. Utilizamos madera de alta calidad proveniente de proveedores de la región. El diseño combina la solidez estructural con acabados finos y respetuosos, garantizando un producto digno para la despedida. Su interior está revestido en satén blanco hipoalergénico.",
+        image: "WhatsApp Image 2025-12-08 at 18.55.10 (2).jpeg" 
     },
     {
         id: "urnas",
         category: "Elaboración Artesanal",
-        title: "Urnas Funerarias",
-        description: "Urnas de elaboración artesanal llevada a cabo en nuestra nave del Polígono Industrial de Guarnizo. Tratadas con el máximo rigor profesional, sensibilidad y calidad en el cuidado del detalle.",
-        image: "https://images.unsplash.com/photo-1605218427368-35b86121852d?q=80&w=2008&auto=format&fit=crop" 
+        title: "Urna Minimalista",
+        description: "Urnas de diseño exclusivo y elaboración artesanal llevada a cabo en nuestra nave del Polígono Industrial de Guarnizo. Torneadas con precisión, estas piezas destacan por su calidez y estética minimalista. Acabado mate natural.",
+        image: "WhatsApp Image 2025-12-08 at 18.55.10 (3).jpeg" 
     }
 ];
 
-// --- INICIALIZACIÓN (Event Listeners y Carga inicial) ---
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Quitar Preloader
+    // 1. Quitar Preloader y Activar Animación Navbar (Estilo Apple)
     setTimeout(() => {
         const loader = document.getElementById('preloader');
+        const mainContent = document.getElementById('main-content');
+        const navbar = document.querySelector('.navbar');
+
         if(loader) {
             loader.style.opacity = '0';
             setTimeout(() => { loader.style.display = 'none'; }, 800);
         }
+        
+        // Mostrar contenido principal y bajar navbar suavemente
+        if(mainContent) mainContent.classList.add('loaded');
+        if(navbar) navbar.classList.add('visible');
+
     }, 1200);
 
     // 2. Renderizar Catálogo
     renderCatalog();
 
-    // 3. Menú Móvil (Listener para el botón)
+    // 3. Menú Móvil
     const menuToggle = document.getElementById('mobile-menu');
     const navMenu = document.querySelector('.nav-menu');
     
@@ -42,46 +49,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. Iniciar Observador de Animaciones (Scroll)
-    // Retardo para asegurar que el DOM dinámico está listo
+    // Cerrar menú móvil al hacer click en un enlace
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            if(navMenu.classList.contains('active-menu')) {
+                navMenu.classList.remove('active-menu');
+                menuToggle.classList.remove('is-active');
+            }
+        });
+    });
+
+    // 4. Iniciar Observador de Animaciones (Scroll Reveal)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, { threshold: 0.1 });
+
     setTimeout(() => {
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     }, 500);
 });
 
-// --- SISTEMA DE NAVEGACIÓN (GLOBAL) ---
-// Esta función debe estar fuera para ser accesible desde el HTML
+// --- FUNCIONES DE NAVEGACIÓN SPA ---
 function navigateTo(pageId) {
-    // 1. Ocultar todas las secciones
     const sections = document.querySelectorAll('.page-section');
     sections.forEach(sec => {
         sec.classList.remove('active');
         sec.style.display = 'none'; 
     });
 
-    // 2. Scroll al top
     window.scrollTo(0, 0);
 
-    // 3. Mostrar sección deseada
     const target = document.getElementById(pageId);
     if (target) {
         target.style.display = 'block';
-        // Forzar reflow para reiniciar animaciones CSS
         void target.offsetWidth; 
         target.classList.add('active');
     }
-
-    // 4. Cerrar menú móvil al navegar
-    const navMenu = document.querySelector('.nav-menu');
-    const menuToggle = document.getElementById('mobile-menu');
-    
-    if(navMenu && navMenu.classList.contains('active-menu')) {
-        navMenu.classList.remove('active-menu');
-        if(menuToggle) menuToggle.classList.remove('is-active');
-    }
 }
 
-// --- RENDERIZADO CATÁLOGO ---
+// --- RENDERIZADO DE CATÁLOGO ---
 function renderCatalog() {
     const container = document.getElementById('catalog-container');
     if(!container) return;
@@ -93,28 +103,35 @@ function renderCatalog() {
         card.className = 'product-card reveal';
         card.onclick = () => openProductDetail(prod.id); 
 
+        // Fallback por si la imagen local falla
+        const fallbackImg = "https://images.unsplash.com/photo-1595429035839-c99c298ffdde?q=80&w=800&auto=format&fit=crop";
+
         card.innerHTML = `
             <div class="pc-img-box">
-                <img src="${prod.image}" alt="${prod.title}">
+                <img src="${prod.image}" alt="${prod.title}" onerror="this.src='${fallbackImg}'">
             </div>
             <div class="pc-info">
                 <span class="pc-cat">${prod.category}</span>
                 <h3 class="pc-title">${prod.title}</h3>
-                <button class="btn-noble" style="margin-top:1rem;">Ver Descripción</button>
+                <button class="btn-noble" style="margin-top:1rem;">Ver Detalle</button>
             </div>
         `;
         container.appendChild(card);
     });
 }
 
-// --- DETALLE PRODUCTO ---
+// --- DETALLE DE PRODUCTO ---
 function openProductDetail(id) {
     const product = productsDB.find(p => p.id === id);
     if (!product) return;
 
-    // Rellenar datos
     const imgEl = document.getElementById('pd-img');
-    if(imgEl) imgEl.src = product.image;
+    const fallbackImg = "https://images.unsplash.com/photo-1595429035839-c99c298ffdde?q=80&w=800&auto=format&fit=crop";
+    
+    if(imgEl) {
+        imgEl.src = product.image;
+        imgEl.onerror = function() { this.src = fallbackImg; };
+    }
     
     const catEl = document.getElementById('pd-category');
     if(catEl) catEl.textContent = product.category;
@@ -125,17 +142,5 @@ function openProductDetail(id) {
     const descEl = document.getElementById('pd-desc');
     if(descEl) descEl.textContent = product.description;
 
-    // Navegar a la página de detalle
     navigateTo('product-detail');
 }
-
-// --- ANIMACIONES AL SCROLL (OBSERVER) ---
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, { threshold: 0.1 });
