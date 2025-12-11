@@ -5,20 +5,22 @@ const productsDB = [
         category: "Fabricación Propia",
         title: "Ataúd Roble Cantabria",
         description: "Ataúdes elaborados íntegramente en España, concretamente en Cantabria. Utilizamos madera de alta calidad proveniente de proveedores de la región. El diseño combina la solidez estructural con acabados finos y respetuosos, garantizando un producto digno para la despedida. Su interior está revestido en satén blanco hipoalergénico.",
-        image: "WhatsApp Image 2025-12-08 at 18.55.10 (2).jpeg" 
+        // NOMBRE ACTUALIZADO
+        image: "ataud-roble.jpeg" 
     },
     {
         id: "urnas",
         category: "Elaboración Artesanal",
         title: "Urna Minimalista",
         description: "Urnas de diseño exclusivo y elaboración artesanal llevada a cabo en nuestra nave del Polígono Industrial de Guarnizo. Torneadas con precisión, estas piezas destacan por su calidez y estética minimalista. Acabado mate natural.",
-        image: "WhatsApp Image 2025-12-08 at 18.55.10 (3).jpeg" 
+        // NOMBRE ACTUALIZADO
+        image: "urna-minimalista.jpeg" 
     }
 ];
 
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. Quitar Preloader y Activar Animación Navbar (Estilo Apple)
+    // 1. Quitar Preloader
     setTimeout(() => {
         const loader = document.getElementById('preloader');
         const mainContent = document.getElementById('main-content');
@@ -29,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => { loader.style.display = 'none'; }, 800);
         }
         
-        // Mostrar contenido principal y bajar navbar suavemente
         if(mainContent) mainContent.classList.add('loaded');
         if(navbar) navbar.classList.add('visible');
 
@@ -49,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Cerrar menú móvil al hacer click en un enlace
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
             if(navMenu.classList.contains('active-menu')) {
@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Iniciar Observador de Animaciones (Scroll Reveal)
+    // 4. Animaciones
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
 });
 
-// --- FUNCIONES DE NAVEGACIÓN SPA ---
 function navigateTo(pageId) {
     const sections = document.querySelectorAll('.page-section');
     sections.forEach(sec => {
@@ -91,7 +90,6 @@ function navigateTo(pageId) {
     }
 }
 
-// --- RENDERIZADO DE CATÁLOGO ---
 function renderCatalog() {
     const container = document.getElementById('catalog-container');
     if(!container) return;
@@ -103,7 +101,7 @@ function renderCatalog() {
         card.className = 'product-card reveal';
         card.onclick = () => openProductDetail(prod.id); 
 
-        // Fallback por si la imagen local falla
+        // Fallback por seguridad
         const fallbackImg = "https://images.unsplash.com/photo-1595429035839-c99c298ffdde?q=80&w=800&auto=format&fit=crop";
 
         card.innerHTML = `
@@ -120,7 +118,6 @@ function renderCatalog() {
     });
 }
 
-// --- DETALLE DE PRODUCTO ---
 function openProductDetail(id) {
     const product = productsDB.find(p => p.id === id);
     if (!product) return;
