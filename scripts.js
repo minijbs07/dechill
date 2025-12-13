@@ -3,7 +3,7 @@ const productsDB = [
     {
         id: "ataudes",
         category: "Fabricación Propia",
-        title: "Ataúd Roble Cantabria",
+        title: "Ataúd Pino Cantabria",
         description: "Ataúdes elaborados íntegramente en España, concretamente en Cantabria. Utilizamos madera de alta calidad proveniente de proveedores de la región. El diseño combina la solidez estructural con acabados finos y respetuosos, garantizando un producto digno para la despedida. Su interior está revestido en satén blanco hipoalergénico.",
         // NOMBRE ACTUALIZADO
         image: "ataud-roble.jpeg" 
